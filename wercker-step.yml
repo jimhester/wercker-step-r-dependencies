@@ -1,0 +1,8 @@
+name: r-dependencies
+version: 0.0.1
+description: install R dependencies
+properties:
+  github_packages:
+    type: string
+    required: false
+    default: ""
