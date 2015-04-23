@@ -15,7 +15,7 @@ github_dependencies () {
   commands=$(for pkg in $@; do
     echo -n " -e 'devtools::install_github(\"$pkg\")'"
   done)
-  Rstudio $commands
+  Rscript $commands
   if [[ $? -ne 0 ]]; then
     fail "github dependencies failed"
   fi
