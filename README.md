@@ -1,4 +1,5 @@
 # r-dependencies
+[![wercker status](https://app.wercker.com/status/897ade61fbdb92ac450cf84c4006a281/s "wercker status")](https://app.wercker.com/project/bykey/897ade61fbdb92ac450cf84c4006a281)
 
 A step to install R dependencies for a package.  Best used with one of the
 [rocker](https://registry.hub.docker.com/repos/rocker/) images.
