@@ -29,11 +29,18 @@ END
 }
 
 github_dependencies () {
-  args=()
-  for pkg in "$@"; do
+  # read values into array
+  IFS=' ' read -a pkgs <<< "$1"
+
+  # buildup command argument
+  local -a args
+  for pkg in "${pkgs[@]}"; do
     args+=("-e" "devtools::install_github(\"$pkg\")")
   done
+
+  # run Rscript
   Rscript "${args[@]}"
+
   if [[ $? -ne 0 ]]; then
     fail "Github dependencies failed"
   else
