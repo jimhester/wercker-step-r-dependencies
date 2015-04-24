@@ -67,6 +67,9 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 # Changelog
 
+## 0.0.5
+- Fix bug with repos default value
+
 ## 0.0.4
 - Add repos option and use BiocInstaller if it is available and repos are not
   set.

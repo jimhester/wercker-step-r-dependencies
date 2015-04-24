@@ -1,5 +1,5 @@
 name: r-dependencies
-version: 0.0.4
+version: 0.0.5
 description: install R dependencies
 properties:
   github_packages:
@@ -9,4 +9,4 @@ properties:
   repos:
     type: string
     required: false
-    default: NULL
+    default: "NULL"
