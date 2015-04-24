@@ -17,6 +17,10 @@ parameter.
 * `github_packages` (optional). A list of additional Github dependencies to
   install, separated by whitespace.
 
+* `repos` (optional). Repos to set in R using `options(repos = XXX)`.  If no
+  repos are set and `BiocInstaller` is included in your docker image
+  `BiocInstaller::biocinstallRepos()` will be used to set the repos.
+
 ## Example
 
 Basic usage:
@@ -29,6 +33,13 @@ If you want to install additional dependencies from Github.
 ```
     - jimhester/r-dependencies:
         github_packages: jimhester/covr jimhester/lintr
+```
+
+Setting non-default repositories.
+
+```
+    - jimhester/r-dependencies:
+        repos: 'c(CRAN = "http://cran.rstudio.org", CRANxtras = "http://www.stats.ox.ac.uk/pub/RWin")'
 ```
 
 # License
@@ -55,6 +66,13 @@ IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 # Changelog
+
+## 0.0.4
+- Add repos option and use BiocInstaller if it is available and repos are not
+  set.
+
+## 0.0.3
+- Shellcheck and explicitly check error status
 
 ## 0.0.2
 - Correct silly typo
