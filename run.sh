@@ -29,10 +29,11 @@ END
 }
 
 github_dependencies () {
-  commands=$(for pkg in "$@"; do
-    echo -n " -e 'devtools::install_github(\"$pkg\")'"
-  done)
-  eval "Rscript $commands"
+  args=()
+  for pkg in "$@"; do
+    args+=("-e" "devtools::install_github(\"$pkg\")")
+  done
+  Rscript "${args[@]}"
   if [[ $? -ne 0 ]]; then
     fail "Github dependencies failed"
   else

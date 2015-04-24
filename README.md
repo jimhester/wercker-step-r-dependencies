@@ -67,6 +67,9 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 # Changelog
 
+## 0.0.6
+- Github dependencies bug
+
 ## 0.0.5
 - Fix bug with repos default value
 
