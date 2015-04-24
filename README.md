@@ -67,6 +67,9 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 # Changelog
 
+## 0.0.8
+- load BiocInstaller quietly
+
 ## 0.0.7
 - Github dependencies completely fixed now
 
