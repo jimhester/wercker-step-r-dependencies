@@ -7,7 +7,9 @@ cran_dependencies () {
   Rscript -e 'install.packages("devtools")'\
           -e 'devtools::install_deps(dependencies = TRUE)'
   if [[ $? -ne 0 ]]; then
-    fail "cran dependencies failed"
+    fail "CRAN dependencies failed"
+  else
+    success "CRAN dependencies installed"
   fi
 }
 
@@ -17,7 +19,9 @@ github_dependencies () {
   done)
   Rscript $commands
   if [[ $? -ne 0 ]]; then
-    fail "github dependencies failed"
+    fail "Github dependencies failed"
+  else
+    success "Github dependencies installed"
   fi
 }
 
@@ -29,4 +33,4 @@ if [ ! -z "$WERCKER_R_DEPENDENCIES_GITHUB_PACKAGES" ]; then
   github_dependencies "$WERCKER_R_DEPENDENCIES_GITHUB_PACKAGES"
 fi
 
-success 'r dependencies succeeded'
+success 'R dependencies installed'
