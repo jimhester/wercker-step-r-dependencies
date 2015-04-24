@@ -1,3 +1,5 @@
+#!/bin/bash
+
 setup_libs () {
   export R_LIBS=$WERCKER_CACHE_DIR/R/library
   mkdir -p "$R_LIBS"
