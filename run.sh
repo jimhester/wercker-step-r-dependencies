@@ -1,12 +1,21 @@
 #!/bin/bash
 
+run_script () {
+  temp_file=$(mktemp -t "XXXXXXXXXX.R")
+  cat > "$temp_file"
+  Rscript "$temp_file"
+  if [[ $? -ne 0 ]]; then
+    fail "Script $temp_file failed!"
+  fi
+}
+
 setup_libs () {
   export R_LIBS=$WERCKER_CACHE_DIR/R/library
   mkdir -p "$R_LIBS"
 }
 
 cran_dependencies () {
-cat > .__temp__ <<END
+  run_script <<END
 repos <- $WERCKER_R_DEPENDENCIES_REPOS
 if (is.null(repos)) {
   if (requireNamespace("BiocInstaller", quietly = TRUE)) {
@@ -16,16 +25,10 @@ if (is.null(repos)) {
   }
 }
 options(repos = repos)
-install.packages("devtools")
 devtools::install_deps(dependencies = TRUE)
 END
-  Rscript .__temp__
-  if [[ $? -ne 0 ]]; then
-    fail "CRAN dependencies failed"
-  else
-    success "CRAN dependencies installed"
-  fi
-  rm .__temp__
+
+  success "CRAN dependencies installed"
 }
 
 github_dependencies () {
